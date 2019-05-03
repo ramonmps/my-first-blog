@@ -1,17 +1,13 @@
-<html>
-<head>
-	<title>My first app python</title>
-</head>
-<body>
-	<div>
-		<h1><a href="/">Blog do futuro</a></h1>
-	</div>
+{% extends 'blog/base.html' %}
+
+{% block content %}
 	{% for posts in post %}
-	<div>
-		<p>Publicado em :{{posts.published_date}}</p>
-		<a href="">{{posts.title}}</a>
+	<div class="post">
+		<div class="date">
+			<p>Publicado em :{{posts.published_date}}</p>
+		</div>
+		<h1><a href="{% url 'post_detail' pk=posts.pk %}">{{posts.title}}</a></h1>
 		<p>{{posts.text|linebreaksbr}}</p>
 	</div>
 	{% endfor %}
-</body>
-</html>
+{% endblock %}
